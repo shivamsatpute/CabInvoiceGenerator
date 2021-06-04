@@ -38,5 +38,15 @@ namespace CabInvoiceGeneratorTest
             InvoiceSummary expectedSummary = new InvoiceSummary(2, 35.0);
             Assert.AreEqual(expectedSummary.GetType(), summary.GetType());
         }
+        [Test]
+        public void GivenDistanceAndTimeForMultipleRides_WhenUserFound_ShouldReturnInvoiceSummary() 
+        {
+                invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+                string userId = "shivam896satpute@gmail.com"; 
+                Ride[] rides = { new Ride(3, 5), new Ride(4, 5) }; 
+               InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
+               InvoiceSummary expectedSummary = new InvoiceSummary(2, 35.0);
+               Assert.AreEqual(expectedSummary.GetType(), summary.GetType());
+        }
     }
 }
