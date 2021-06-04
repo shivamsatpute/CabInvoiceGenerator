@@ -98,6 +98,14 @@ namespace CabInvoiceGenerator
                 throw new CabInvoiceException(CabInvoiceException.ExceptionType.INVALID_USER_ID, "Invalid user id");
             }
         }
-
+        public double GetMultipleRideFare(Ride[] rides)
+        {
+            double  totalFare = 0.0; 
+            foreach (Ride ride in rides) //rides.Length
+            {
+                totalFare += this.CalculateFare(ride.distance, ride.time);
+            }
+            return totalFare / rides.Length;
+        }
     }
 }
